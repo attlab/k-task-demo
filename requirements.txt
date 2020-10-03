@@ -157,8 +157,6 @@ pygame==1.9.6
 Pygments==2.3.1
 pylint==2.3.1
 pynput==1.4.2
-pyobjc-framework-Cocoa==5.2
-pyobjc-framework-Quartz==5.2
 pyodbc==4.0.26
 pyOpenSSL==19.0.0
 pyparsing==2.4.7
