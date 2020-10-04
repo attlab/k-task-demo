@@ -1,10 +1,10 @@
 import psycopg2 as psycopg2
 import os 
 
-hostname = os.environ['HOSTNAME']
-username = os.environ['USERNAME']
-password = os.environ['PASSWORD']
-database = os.environ['DATABASE']
+hostname = 'localhost'
+username = 'dannytoomey'
+password = 'ktaskdemo2pass'
+database = 'ktaskdemo2'
 
 class HandleData():
 	def __init__(hostname,username,password,dbname):
