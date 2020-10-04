@@ -6,7 +6,7 @@ class HandleData():
 		database_url = os.environ['DATABASE_URL']
 		self.database_url = database_url
 
-	def addData(self,participant_id,block,trial,trial_resp,trial_rt,trial_acc):
+	def addData(self,participant_id,block,trial,trial_resp,trial_rt,trial_acc,change):
 		conn = psycopg2.connect(self.database_url, sslmode='require')
 		cur = conn.cursor()
 
@@ -19,7 +19,7 @@ class HandleData():
 
 		try:
 
-			cur.execute( f"INSERT INTO ktask_heroku_data (id,participant_id,block,trial,trial_resp,trial_rt,trial_acc) VALUES ({id},{participant_id},{block},{trial},'{trial_resp}',{trial_rt},{trial_acc});" )
+			cur.execute( f"INSERT INTO ktask_heroku_data (id,participant_id,block,trial,trial_resp,trial_rt,trial_acc,change) VALUES ({id},{participant_id},{block},{trial},'{trial_resp}',{trial_rt},{trial_acc},'{change}');" )
 			conn.commit()
 			print(f"added data for id {id}")
 			

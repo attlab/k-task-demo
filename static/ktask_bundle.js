@@ -30226,7 +30226,17 @@ class KTask{
             
             if (this.exp_stage != 'target'){
 
-                this.square_array[0].set({ left:this.x_array[0], top:this.y_array[0], fill:`rgb(${this.r_array[0]},${this.g_array[0]},${this.b_array[0]}` })        
+                var change = Math.random() < 0.2    // 20% chance each trail will be a change trial
+
+                if (change){
+                    this.square_array[0].set({ left:this.x_array[0], top:this.y_array[0], fill:`rgb(${255 * Math.random()},${255 * Math.random()},${255 * Math.random()}` })        
+                    
+
+                } else {
+                    this.square_array[0].set({ left:this.x_array[0], top:this.y_array[0], fill:`rgb(${this.r_array[0]},${this.g_array[0]},${this.b_array[0]}` })        
+                    
+                }
+
                 this.canvas.renderAll() 
                 var target_shown = performance.now() 
                 this.exp_stage = 'target'
@@ -30242,15 +30252,22 @@ class KTask{
                         var press = performance.now()
                         var keyCode = e.keyCode
                         var trial_resp = NaN
+                        var trial_acc = 0
 
                         if (keyCode == 102 || keyCode == 106){
                             if (keyCode == 102){
                                 trial_resp = 'f'
+                                if (!change){
+                                    trial_acc=1
+                                }
 
                             }
 
                             if (keyCode == 106){
                                 trial_resp = 'j'
+                                if (change){
+                                    trial_acc=1
+                                }
 
                             }
 
@@ -30268,7 +30285,8 @@ class KTask{
                                         trial : trial,
                                         trial_resp : trial_resp,
                                         trial_rt : trial_rt,
-                                        trial_acc : 1
+                                        trial_acc : trial_acc,
+                                        change: change
                                     },
                                     success: function () {
                                         console.log("sent data");
@@ -30295,7 +30313,8 @@ class KTask{
                                         trial : trial,
                                         trial_resp : trial_resp,
                                         trial_rt : trial_rt,
-                                        trial_acc : 0
+                                        trial_acc : trial_acc,
+                                        change: change
                                     },
                                     success: function () {
                                         console.log("sent data");

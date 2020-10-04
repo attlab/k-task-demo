@@ -33,10 +33,11 @@ def data():
     trial_resp=request.args.get('trial_resp')
     trial_rt=request.args.get('trial_rt')
     trial_acc=request.args.get('trial_acc')
+    change=request.args.get('change')
 
     handle_data = HandleData()
     
-    return Response(handle_data.addData(participant_id,block,trial,trial_resp,trial_rt,trial_acc))
+    return Response(handle_data.addData(participant_id,block,trial,trial_resp,trial_rt,trial_acc,change))
 
 
 if __name__ == "__main__":
