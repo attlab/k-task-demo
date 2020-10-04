@@ -1,34 +1,16 @@
 import psycopg2 as psycopg2
 import os 
 
-hostname = 'localhost'
-username = 'dannytoomey'
-password = 'ktaskdemo2pass'
-database = 'ktaskdemo2'
-
 class HandleData():
-	def __init__(hostname,username,password,dbname):
-		self.hostname = hostname
-		self.username = username
-		self.password = password
-		self.dbname = dbname
+	def __init__(self):
+		database_url = os.environ['DATABASE_URL']
+		self.database_url = database_url
 
-	def getData():
-		conn = psycopg2.connect( host=hostname, user=username, password=password, dbname=database )
-		cur = conn.cursor()
-		cur.execute( "SELECT * FROM ktask_data" )
-		
-		for row in cur:
-			print(row)
-
-		conn.close()
-
-	def addData(participant_id,block,trial,trial_resp,trial_rt,trial_acc):
-		
-		conn = psycopg2.connect( host=hostname, user=username, password=password, dbname=database )
+	def addData(self,participant_id,block,trial,trial_resp,trial_rt,trial_acc):
+		conn = psycopg2.connect(self.database_url, sslmode='require')
 		cur = conn.cursor()
 
-		cur.execute( "SELECT id FROM ktask_data" )		
+		cur.execute( "SELECT id FROM ktask_heroku_data" )		
 		for row in cur:
 			x = row
 
@@ -37,7 +19,7 @@ class HandleData():
 
 		try:
 
-			cur.execute( f"INSERT INTO ktask_data (id,participant_id,block,trial,trial_resp,trial_rt,trial_acc) VALUES ({id},{participant_id},{block},{trial},'{trial_resp}',{trial_rt},{trial_acc});" )
+			cur.execute( f"INSERT INTO ktask_heroku_data (id,participant_id,block,trial,trial_resp,trial_rt,trial_acc) VALUES ({id},{participant_id},{block},{trial},'{trial_resp}',{trial_rt},{trial_acc});" )
 			conn.commit()
 			print(f"added data for id {id}")
 			
@@ -48,8 +30,22 @@ class HandleData():
 			if conn is not None:
 				conn.close()
 
+	def getData(self):
+		conn = psycopg2.connect(self.database_url, sslmode='require')
+		cur = conn.cursor()
+		cur.execute("SELECT * FROM ktask_heroku_data")
 
-HandleData.getData()    
+		for row in cur:
+			print(row)
+
+		conn.close()
+
+	
+
+
+data = HandleData()   
+#data.addData(199,1,1,'f',100,1) 
+data.getData()
 
 
 

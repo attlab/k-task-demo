@@ -14,7 +14,7 @@ cache_buster = CacheBuster(config=config)
 app = Flask(__name__, template_folder='./templates', static_folder='./static')
 cache_buster.register_cache_buster(app)
 
-from connect import HandleData
+from connect import HandleData 
 
 @app.route('/')
 def home():
@@ -34,9 +34,9 @@ def data():
     trial_rt=request.args.get('trial_rt')
     trial_acc=request.args.get('trial_acc')
 
-    print(participant_id,block,trial,trial_resp,trial_rt,trial_acc, file=sys.stderr)
-
-    return Response(HandleData.addData(participant_id,block,trial,trial_resp,trial_rt,trial_acc))
+    handle_data = HandleData()
+    
+    return Response(handle_data.addData(participant_id,block,trial,trial_resp,trial_rt,trial_acc))
 
 
 if __name__ == "__main__":
