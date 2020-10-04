@@ -1,40 +1,182 @@
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
     <title>K Task Demo</title>
-    <head>
-        
 
-    </head>
-    <body>
-        <div id="canvas_frame">
-            <canvas id="canvas" style="position:absolute; background-color: gray; left:25%; top:25%; width:50%; height:50%;"></canvas>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      div.starter-template{
+        position: absolute;
+        top: 5%;
+        left: center;
+
+      }
+
+      div.pid_label{
+          position: absolute;
+          display: center;
+          margin: auto;
+          padding: 0px;
+          top: 60%;
+          transform: translateY(-60%);
+          left:50%;
+          transform: translateX(-50%);
+          text-align: center;
+
+
+       }
+
+      div.pid_input{
+          position: absolute;
+          display: center;
+          margin: auto;
+          padding: 0px;
+          top: 65%;
+          transform: translateY(-65%);
+          left:50%;
+          transform: translateX(-50%);
+          text-align: center;
+       }
+
+       div.submit{
+          position: absolute;
+          display: center;
+          margin: auto;
+          padding: 0px;
+          top: 70%;
+          transform: translateY(-70%);
+          left:50%;
+          transform: translateX(-50%);
+          text-align: center;
+       }
+
+       form{
+          position: absolute;
+          display: center;
+          margin: auto;
+          padding: 0px;
+          top: 70%;
+          transform: translateY(-70%);
+          left:50%;
+          transform: translateX(-50%);
+          text-align: center;
+
+
+       }
+
+       
+
+      
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='bootstrap/dist/css/starter-template.css')}}" rel="stylesheet">
+    
+    
+
+  </head> 
+  <body>
+    
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <h1>This is a K-task experiment created with Flask and Heroku.</h1>
+            <p class="lead">
+                <a href="https://pypi.org/project/Flask/">Flask</a> is a lightweight web framework for python and <a href="https://www.heroku.com/home">Heroku</a> is a free web deploymennt service. <br>
+                The code for the experiment can be found <a href="https://github.com/attlab/k-task-demo">here.</a></p>
+                <p>In this experiment, your goal is to determine if a square changed color or not. <br>
+                    An array of colored squares will appear on the screen, then go away. One square from the array will pop back up. <br> 
+                    Press 'F' if the square stayed the same color and 'J' if it changed color.<br>
+
+                </p>
+                <p>A participant ID is required to participate in this experiment. Please enter yours in the box below. <br>
+                (For demonstration purposes, feel free to put any ID greater than zero.)</p>
 
         </div>
+
+    </main><!-- /.container -->
+
+    <form method="GET">
+        <label id="pid_label" for="participant_id">Please enter Participant ID:</label> <br>
+        <input type="number" name="participant_id" id="participant_id" placeholder="Participant ID">
+        <input type="button" value="Submit" onclick=newLocation()>
+        <script type="text/javascript">
+            function newLocation() { 
+                var participant_id = document.getElementById('participant_id').value
+
+                if (participant_id > 0){
+                    var params = new URLSearchParams();
+                    params.append('participant_id',participant_id)
+                    var url = "exp?" + params.toString()
+                    window.location.href=url; 
+                    
+                } else {
+                    document.getElementById('pid_label').innerHTML="Participant ID is required and must be larger than zero."
+
+                }
+
+                
+                
+            } 
+        </script>
+        
+
 
         <!--
-
-        <div id='text_frame' style="margin-left: 25%">
-            <font color="444444" size="3"></font>
-            <h3>K task demo </h3><br>
-            <font color="000000" size="3"></font>
-            <p>The source code for this experiment is <a href="https://github.com/attlab/flask-k-task-demo">here.</a></p>
-            <p>Press space to start.</p>
-            <p>Press F is the square stayed the same and J if the square is different.</p>
-
+        <div class="pid_label">
+            <label id="pid_label" for="participant_id">Please enter Participant ID:</label>
         </div>
-        
+        <div class="pid_input">
+            <input type="number" id="participant_id" name="participant_id" placeholder="Participant ID" size="25">
+        </div>
+        <div class = "submit">
+            <input type="button" id="submit" value="Start" onclick="newLocation()">
+            <script type="text/javascript">
+                function newLocation() { 
+                    var participant_id = document.getElementById('participant_id').value
 
-        
+                    if (participant_id > 0){
+                        document.getElementById('submit').value = participant_id
+                        window.location.href="exp"; 
 
-        <div id='F' style="position:absolute; font-size:30; background-color: gray; left:10%; top:50%; width:100px; height:50px; text-align: center;"><br>F</div>            
-        <div id='J' style="position:absolute; font-size:30; background-color: gray; right:10%; top:50%; width:100px; height:50px"><br>J</div>
-        <div id='space' style="position:absolute; font-size:30; background-color: gray; left:40%; bottom:5%; width:200px; height:50px"><br>Space</div>
-        
-        -->
+                    } else {
+                        document.getElementById('pid_label').innerHTML="Participant ID required and must be larger than zero."
+                        
 
-        <script type="text/javascript" src="{{ url_for('static', filename='ktask.js')}}"></script>
+                    }
+                    
+                } 
+            </script>
+        </div>
+    -->
 
-        
+    </form>
 
-    </body>    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   
 
 </html>

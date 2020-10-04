@@ -30001,13 +30001,17 @@ const fabric = require("fabric").fabric;
 // to use browserify, run 'browserify <source file> -o <target file>'
 // and browserify will take the source file, bundle it with its packages,
 // and create a file at target file that's ready to go
+var params = new URLSearchParams(window.location.search)
+participant_id = params.get('participant_id')
+console.log(participant_id)
 
 class KTask{
-    constructor(fabric,log_data){
+    constructor(fabric,participant_id){
         var w = window.innerWidth
         var h = window.innerHeight
 
         this.fabric = fabric
+        this.participant_id = participant_id
         
         this.canvas = new fabric.StaticCanvas('canvas',{
             backgroundColor: 'grey',
@@ -30135,9 +30139,10 @@ class KTask{
                     {fill: 'white',
                     textAlign:'center',
                     fontSize:20,
-                    strokeWidth:1.5
+                    fontFamily:'Calibri Light',
+                    fontWeight:'normal'
                 })
-                instructions.set({ left:self.canvas_center_x - instructions.width/2,top:self.canvas_center_y - instructions.height/2 })
+                instructions.set({ left:self.canvas_center_x - instructions.width/1.8,top:self.canvas_center_y - instructions.height/2 })
                 self.canvas.add(instructions)
 
 
@@ -30149,9 +30154,10 @@ class KTask{
                     {fill: 'white',
                     textAlign:'center',
                     fontSize:20,
-                    strokeWidth:1.5
+                    fontFamily:'Calibri Light',
+                    fontWeight:'normal'
                 })
-                instructions.set({ left:self.canvas_center_x - 150,top:self.canvas_center_y - 150 })
+                instructions.set({ left:self.canvas_center_x - instructions.width/1.6,top:self.canvas_center_y - 150 })
                 self.canvas.add(instructions)
 
 
@@ -30229,6 +30235,7 @@ class KTask{
                 var block = this.block_count
                 var trial = this.trial_count
                 var resp_given = this.resp_given
+                var participant_id = this.participant_id
                  
                 function on_press(e){
                     if (resp_given == false){
@@ -30248,6 +30255,7 @@ class KTask{
                             }
 
                             var trial_rt = press - target_shown
+                            
 
                             if (trial_rt <= 1000){
 
@@ -30255,7 +30263,7 @@ class KTask{
                                     url: "./data",
                                     type: 'GET',
                                     data: { 
-                                        participant_id : 199,
+                                        participant_id : participant_id,
                                         block : block,
                                         trial : trial,
                                         trial_resp : trial_resp,
@@ -30271,6 +30279,7 @@ class KTask{
                                 });
 
                                 resp_given = true
+                                console.log(participant_id)
 
                             } 
                             else {
@@ -30281,7 +30290,7 @@ class KTask{
                                     url: "./data",
                                     type: 'GET',
                                     data: { 
-                                        participant_id : 199,
+                                        participant_id : participant_id,
                                         block : block,
                                         trial : trial,
                                         trial_resp : trial_resp,
@@ -30356,7 +30365,7 @@ class KTask{
 
 }
 
-ktask = new KTask(fabric)
+ktask = new KTask(fabric,participant_id)
 ktask.run_exp()
 
 
