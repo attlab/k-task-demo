@@ -20,9 +20,9 @@ from connect import HandleData
 def home():
     return render_template('home.html')
 
-@app.route('/tests')
+@app.route('/exp')
 def test():
-    return render_template('test.html')
+    return render_template('exp.html')
 
 @app.route('/data',methods=['GET'])
 def data():
