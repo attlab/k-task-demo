@@ -41,6 +41,15 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 - **flask_cache_buster/**  
    - Module that gives flask cache-busting capabilities. Cache busting is a method that ensures a browser always uses the most up-to-date versions of available javascript resources. 
 
+## Deploying to Heroku
+
+- Create a free Heroku [account](https://signup.heroku.com/)
+- Install the Heroku [CLI](https://devcenter.heroku.com/articles/heroku-cli)
+- Create a new app from the Heroku [dashboard](https://dashboard.heroku.com/apps)
+- Add Heroku as a remote [repository](https://devcenter.heroku.com/articles/git)
+	- To do this via the CLI, type `heroku git:remote -a <your app name>`
+- Deploy your app to Heroku.
+	- To do this via CLI, type `git push heroku master`
 
 
 
