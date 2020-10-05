@@ -17,7 +17,7 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 
 ## Files included
 
-- app.py   
+- **app.py**   
    - Builds the flask application. On a local machine, this can be done by typing `FLASK_APP=app.py flask run` or `flask run` in the command line. 
 
 - connect.py  
