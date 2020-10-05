@@ -1,5 +1,5 @@
 # Flask K-task Demo
-https://img.shields.io/github/issues/attlab/k-task-demo
+[![Issues:](https://img.shields.io/github/issues/attlab/k-task-demo)]
 https://img.shields.io/github/forks/attlab/k-task-demo 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
