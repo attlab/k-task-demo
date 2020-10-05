@@ -43,23 +43,23 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 
 ## Deploying to Heroku
 
-- Create a free Heroku [account](https://signup.heroku.com/)
-- Install the Heroku [CLI](https://devcenter.heroku.com/articles/heroku-cli)
-- Create a new app from the Heroku [dashboard](https://dashboard.heroku.com/apps)
-- Add Heroku as a remote [repository](https://devcenter.heroku.com/articles/git)
-	- To do this via the CLI, type `heroku git:remote -a <your app name>`
-- Deploy your app to Heroku.
-	- To do this via CLI, type `git push heroku master`
+- Create a free Heroku [account.](https://signup.heroku.com/)
+- Install the Heroku [CLI.](https://devcenter.heroku.com/articles/heroku-cli)
+- Create a new app from the Heroku [dashboard.](https://dashboard.heroku.com/apps)
+- Add Heroku as a remote [repository.](https://devcenter.heroku.com/articles/git)   
+	*To do this via the CLI, type `heroku git:remote -a <your app name>`*
+- Deploy your app to Heroku.   
+	*To do this via CLI, type `git push heroku master`*
 
 ## Configuring a database (example with Heroku PostgreSQL)
 *Note - if you already have a database you want to connect to your app, skip to the last two steps.*
 - Go to your Heroku app's page and click 'Resources' at the top of the page.
-- In 'Configure Add-ons' select 'Heroku Postgres' and add it under a free ['hobby dev'](https://devcenter.heroku.com/articles/heroku-postgres-plans#hobby-tier) plan
-   - To do this via CLI, type `heroku addons:create heroku-postgresql:hobby-dev`
-- To check that the database is setup, type `heroku pg:psql` in the command line and a SQL interface should load in the command line. 
-- To [create a table](https://www.w3schools.com/sql/sql_create_table.asp) in the Heroku SQL interface, type `CREATE TABLE <your table name> (<your table column 1> <your column 1 value type>, <your table column 2> <your table column 2 value>, ...);`. Click the link for example specifying value type syntax.   
-   *Notes on SQL commands - Don't forget to put ';' at the end! Otherwise nothing will happen and you won't know why.*
-- To connect the database to you app, you'll need to create a `.env` file. To do this on mac/linux, type `touch .env` in your root app directory.
+- In 'Configure Add-ons' select 'Heroku Postgres' and add it under a free ['hobby dev'](https://devcenter.heroku.com/articles/heroku-postgres-plans#hobby-tier) plan.   
+   *To do this via CLI, type `heroku addons:create heroku-postgresql:hobby-dev`*
+- To check that the database is setup, type `heroku pg:psql` from your app's root directory and a SQL interface should load in the command line. 
+- To [create a table](https://www.w3schools.com/sql/sql_create_table.asp) in the Heroku SQL interface, type `CREATE TABLE <your table name> (<your table column 1> <your column 1 value type>, <your table column 2> <your table column 2 value>, ...);`. Click the link for an example specifying value type syntax.   
+   *Note on SQL commands - Don't forget to put ';' at the end! Otherwise nothing will happen and you won't know why.*
+- To connect the database to your app, you'll need to create a `.env` file. To do this on mac/unix, type `touch .env` in your app's root directory.
 - Go to your Heroku app page and click on the postgres [database link](https://data.heroku.com/datastores/c04cf3fa-add5-4025-9632-0ddb8fc9050a). Once on the page for the database, click 'Settings' then 'View Credentials' to see your database credentials. 
 - Copy the URI and paste it in your `.env` file as `DATABASE_URL="<your data base URI>"` 
 - To check that the database is configured, type `export DATABASE_URL="<your data base URI>` then type `python -c 'from connect import HandleData; data=HandleData(); data.getData()'`. This should return your data as rows printed to the terminal.
