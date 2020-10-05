@@ -70,29 +70,6 @@ class KTask{
 
     }
 
-    /*
-    new_square(x,y,size,color){
-        if (x == 'center'){
-            x = this.canvas_center_x
-        }
-        if (y == 'center'){
-            y = this.canvas_center_y
-        }
-        var rect = new fabric.Rect({
-            left: x - size/2,
-            top: y - size/2,
-            fill: color,
-            width: size,
-            height: size
-        });
-
-        this.rect = rect
-        
-        this.canvas.add(this.rect)
-
-    }
-    */
-
     new_array(set_size){
         // specify the size of the squares in the array
         var size = 30   

@@ -36,7 +36,7 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
    - Module for nice looking CSS I [found](https://getbootstrap.com/).
 
 - **static/**  
-   - Directory containing static resources to be used by HTML templates. The javascript files that run the experiment are found in this folder.
+   - Directory containing static resources to be used by HTML templates. The javascript files that run the experiment are found in this folder. Read `ktask_source.js` for annotated code, `ktask_bundle.js` is a file generated for the browser and is not intended to be read.
 
 - **flask_cache_buster/**  
    - Module that gives flask cache-busting capabilities. Cache busting is a method that ensures a browser always uses the most up-to-date versions of available javascript resources. 
