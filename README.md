@@ -1,4 +1,5 @@
 # Flask K-task Demo
+https://img.shields.io/github/issues/attlab/k-task-demo https://img.shields.io/github/forks/attlab/k-task-demo 
 
 This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](https://www.heroku.com/home) to build and deploy a k-task experiment. 
 
@@ -37,5 +38,7 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 
 - **flask_cache_buster/**  
    - Module that gives flask cache-busting capabilities. Cache busting is a method that ensures a browser always uses the most up-to-date versions of available javascript resources. 
+
+
 
 
