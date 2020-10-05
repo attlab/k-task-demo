@@ -1,7 +1,7 @@
 # Flask K-task Demo
 [![Issues:](https://img.shields.io/github/issues/attlab/k-task-demo)](https://github.com/attlab/k-task-demo/issues)
-https://img.shields.io/github/forks/attlab/k-task-demo 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Forks:](https://img.shields.io/github/forks/attlab/k-task-demo )](https://github.com/attlab/k-task-demo/network/members)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](https://www.heroku.com/home) to build and deploy a k-task experiment. 
 
