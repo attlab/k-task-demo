@@ -57,7 +57,8 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 - In 'Configure Add-ons' select 'Heroku Postgres' and add it under a free ['hobby dev'](https://devcenter.heroku.com/articles/heroku-postgres-plans#hobby-tier) plan
    - To do this via CLI, type `heroku addons:create heroku-postgresql:hobby-dev`
 - To check that the database is setup, type `heroku pg:psql` in the command line and a SQL interface should load in the command line. 
-- To [create a table](https://www.w3schools.com/sql/sql_create_table.asp) in the Heroku SQL interface, type `CREATE TABLE <your table name> (<your table column 1> <your column 1 value type>, <your table column 2> <your table column 2 value>, ...)`. Click the link for example specifying value type syntax. 
+- To [create a table](https://www.w3schools.com/sql/sql_create_table.asp) in the Heroku SQL interface, type `CREATE TABLE <your table name> (<your table column 1> <your column 1 value type>, <your table column 2> <your table column 2 value>, ...);`. Click the link for example specifying value type syntax.   
+   *Notes on SQL commands - Don't forget to put ';' at the end! Otherwise nothing will happen and you won't know why.*
 - To connect the database to you app, you'll to create a `.env` file. To do this on mac/linux, type `touch .env` in your root app directory.
 - Go to your Heroku app page and click on the postgres [database link](https://data.heroku.com/datastores/c04cf3fa-add5-4025-9632-0ddb8fc9050a). Once on the page for the database, click 'Settings' then 'View Credentials' to see your database credentials. 
 - Copy the URI and paste it in your `.env` file as `DATABASE_URL="<your data base URI>"` 
