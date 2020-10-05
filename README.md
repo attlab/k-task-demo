@@ -51,7 +51,7 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 - Deploy your app to Heroku.
 	- To do this via CLI, type `git push heroku master`
 
-## Configuring a database (exmaple with Heroku PostgreSQL)
+## Configuring a database (example with Heroku PostgreSQL)
 *Note - if you already have a database you want to connect to your app, skip to the last two steps.*
 - Go to your Heroku app's page and click 'Resources' at the top of the page.
 - In 'Configure Add-ons' select 'Heroku Postgres' and add it under a free ['hobby dev'](https://devcenter.heroku.com/articles/heroku-postgres-plans#hobby-tier) plan
