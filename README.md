@@ -10,10 +10,10 @@ This demonstration uses [Flask](https://pypi.org/project/Flask/) and [Heroku](ht
 ## Installation
 
 - Clone this repository. 
-	-`git clone https://github.com/attlab/k-task-demo`
+	*`git clone https://github.com/attlab/k-task-demo`*
 - Install requirements.
-	-`npm install package-lock.json`
-	-`pip install -r requirements.txt`
+	*`npm install package-lock.json`*
+	*`pip install -r requirements.txt`*
 
 ## Files included
 
